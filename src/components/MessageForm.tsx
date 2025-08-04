@@ -6,7 +6,7 @@ import { Input } from './ui/input'
 const MessageForm = () => {
 
     const [message, setMessage] = useState<string>("");
-    const [delay, setDelay] = useState<number>(0);
+    const [delay, setDelay] = useState<number>();
     const [isSending, setIsSending] = useState<boolean>(false);
     const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null)
     const [sentMessage, setSentMessage] = useState<string>("");
@@ -53,12 +53,14 @@ const MessageForm = () => {
 
         <Button className='w-full' variant="destructive" onClick={handleCancel}>Cancel Sending</Button>
         )}
-        {
+        {sentMessage && (
+
             <div className='bg-green-100 border rounded p-3 text-green-900'>
                 <p className='font font-semibold'>Message Sent:</p>
                 <p>{sentMessage}</p>
             </div>
-        }
+        
+        )}
     </div>
   )
 }
